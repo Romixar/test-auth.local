@@ -4,27 +4,34 @@ function __autoload($cl_name){
     
     $file = strtolower($cl_name).'.php';
     
+    
     if(file_exists($file)){
         
         include $file;
         
     }
     
-    if(file_exists(__DIR__.'/model/'.$file)){
+    if(file_exists('../'.$file)){
         
-        include __DIR__.'/model/'.$file;
-        
-    }
-    
-    if(file_exists(__DIR__.'/controller/'.$file)){
-        
-        include __DIR__.'/controller/'.$file;
+        include '../'.$file;
         
     }
     
-    if(file_exists(__DIR__.'/view/'.$file)){
+    if(file_exists(__DIR__.'/admin/model/'.$file)){
         
-        include __DIR__.'/view/'.$file;
+        include __DIR__.'/admin/model/'.$file;
+        
+    }
+    
+    if(file_exists(__DIR__.'/admin/controller/'.$file)){
+        
+        include __DIR__.'/admin/controller/'.$file;
+        
+    }
+    
+    if(file_exists(__DIR__.'/admin/view/'.$file)){
+        
+        include __DIR__.'/admin/view/'.$file;
         
     }
     

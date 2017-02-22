@@ -5,11 +5,12 @@ class Router{
     
     private $routes = [// маршруты
         
+        //'' => 'login/run',
         'main' => 'main/run',
         'about' => 'about/run',
         'services' => 'services/run',
         'contacts' => 'contacts/run',
-        'admin' => 'login/run',
+        
         
     ];
     
@@ -22,15 +23,27 @@ class Router{
         
         $arr = explode('/',$url);
         
+        debug($arr);
+        
         $reg = '/[a-zA-Z]*/';
         
         $tmp = [];
         
-        if(!empty($arr[1]) && preg_match($reg,$arr[1])){
+        if($arr[1] == 'admin' && $arr[2] == ''){
+            $ctrl = 'login';
+            $act = 'run';
+            
+            $ctrl = ucfirst($ctrl).'Controller';
+            $act = 'action'.ucfirst($act);
+            
+            return;
+        }
+        
+        if(!empty($arr[2]) && preg_match($reg,$arr[2])){
             
             foreach($this->routes as $k => $v){
                 
-                if($arr[1] == $k) $tmp = explode('/',$v);
+                if($arr[2] == $k) $tmp = explode('/',$v);
                 
             }
             
