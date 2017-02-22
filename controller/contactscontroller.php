@@ -1,12 +1,12 @@
 <?php
 
-class ContactsController{
+class ContactsController extends Controller{
     
     
     public function actionRun(){
         
         
-        echo 'contactscontroller start!';
+        $this -> view -> render('contacts');
         
         
     }

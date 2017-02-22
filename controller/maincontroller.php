@@ -1,12 +1,12 @@
 <?php
 
-class MainController{
+class MainController extends Controller{
     
     
     public function actionRun(){
         
         
-        echo 'maincontroller start!';
+        $this -> view -> render('main');
         
         
     }

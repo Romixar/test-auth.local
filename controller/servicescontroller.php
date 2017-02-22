@@ -1,12 +1,12 @@
 <?php
 
-class ServicesController{
+class ServicesController extends Controller{
     
     
     public function actionRun(){
         
         
-        echo 'servicescontroller start!';
+        $this -> view -> render('services');
         
         
     }

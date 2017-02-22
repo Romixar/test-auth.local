@@ -1,12 +1,12 @@
 <?php
 
-class AboutController{
+class AboutController extends Controller{
     
     
     public function actionRun(){
         
         
-        echo 'aboutcontroller start!';
+        $this -> view -> render('about');
         
         
     }
