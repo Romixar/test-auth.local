@@ -7,7 +7,11 @@ class User extends DB{
     
     
     
+    
+    
     public function run(){
+        
+        $db = new DB();
         
         
         
