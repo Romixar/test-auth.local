@@ -1,12 +1,12 @@
 <?php
 
-class MainController{
+class ContactsController{
     
     
     public function actionRun(){
         
         
-        echo 'maincontroller start!';
+        echo 'contactscontroller start!';
         
         
     }

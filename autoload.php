@@ -2,7 +2,7 @@
 
 function __autoload($cl_name){
     
-    $file = $cl_name.'php';
+    $file = strtolower($cl_name).'.php';
     
     if(file_exists($file)){
         
@@ -10,30 +10,32 @@ function __autoload($cl_name){
         
     }
     
-    if(file_exists('/model/'.$file)){
+    if(file_exists(__DIR__.'/model/'.$file)){
         
-        include '/model/'.$file;
-        
-    }
-    
-    if(file_exists('/controller/'.$file)){
-        
-        include '/controller/'.$file;
+        include __DIR__.'/model/'.$file;
         
     }
     
-    if(file_exists('/view/'.$file)){
+    if(file_exists(__DIR__.'/controller/'.$file)){
         
-        include '/view/'.$file;
+        include __DIR__.'/controller/'.$file;
+        
+    }
+    
+    if(file_exists(__DIR__.'/view/'.$file)){
+        
+        include __DIR__.'/view/'.$file;
         
     }
     
     
 }
 
-spl_autoload_register();
+//spl_autoload_register();
 
-
+function debug($arr){
+    echo '<pre>'.print_r($arr,true).'</pre>';
+}
 
 
 

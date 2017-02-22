@@ -1,12 +1,12 @@
 <?php
 
-class MainController{
+class AboutController{
     
     
     public function actionRun(){
         
         
-        echo 'maincontroller start!';
+        echo 'aboutcontroller start!';
         
         
     }
