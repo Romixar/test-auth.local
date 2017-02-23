@@ -26,13 +26,6 @@ class User extends DB{
         
         if(count($data) > 0){
             
-//           Session::init();
-//           Session::set('loggedIn', true);
-            
-            //session_start();
-            //echo 'попадаю';
-            //debug($_SESSION);
-            
             $_SESSION['loggedIn'] = true;
             
             return;
@@ -41,8 +34,6 @@ class User extends DB{
         }else{
             
             return;
-            
-
             
         }
         

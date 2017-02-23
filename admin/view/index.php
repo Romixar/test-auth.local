@@ -15,8 +15,4 @@
 
 <body>
 
-<?php// if(Session::get('loggedIn') == true):?>
   <a href="/admin/logout">Logout</a>
-<?php// else: ?>
-  <a href="login/index">Login</a>
-<?php// endif; ?>

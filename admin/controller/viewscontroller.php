@@ -6,7 +6,6 @@ class ViewsController{
     
     public function __construct(){
         
-        //include '/admin/view/index.php';
         include '/../view/index.php';
         
     }

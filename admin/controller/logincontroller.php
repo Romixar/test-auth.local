@@ -8,20 +8,8 @@ class LoginController extends Controller{
         
         $this -> model = new User();
         
-        
         parent::__construct();
         
-//        Session::init();
-//        
-//        $logged = Session::get('loggedIn');
-//        
-//        if($logged == false){
-//            
-//           Session::destroy();
-//            
-//           //header('Location: ../login');
-//           exit();
-//        }
         
     }
     
@@ -30,44 +18,22 @@ class LoginController extends Controller{
     
     public function actionRun(){
         
-        if(isset($this->data['do_login'])){
-            
-            //debug($this->data);
-            //die;
-            
-            $this -> model -> run();
-            
-//            debug($_SESSION);
-//            
-//            die('завершаю login/run');
-        }
+        if(isset($this->data['do_login'])) $this -> model -> run();
         
         if(isset($_SESSION['loggedIn'])){
             
-            //debug($_SESSION);
-            
             $this-> view -> render('main');
-        }else{
-            $this-> view -> render('login');
-        }
+            
+        }else $this-> view -> render('login');
 
         
     }
-    
-    
-    public function actionIndex(){
-        
-        $this-> view -> render('login');
-        
-        
-    }
-    
+
     public function actionLogout(){
         
         session_destroy();
         
         $this -> view -> render('login');
-
         
         exit();
     }

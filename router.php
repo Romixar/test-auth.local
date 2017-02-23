@@ -5,18 +5,12 @@ class Router{
     
     private $routes = [// маршруты
         
-        'admin/' => 'login/run',
         'admin/login' => 'login/run',
         'admin/logout' => 'login/logout',
-        //'main' => 'main/run',
         'admin/main' => 'main/run',
-        //'about' => 'about/run',
         'admin/about' => 'about/run',
-        //'services' => 'services/run',
         'admin/services' => 'services/run',
-        //'contacts' => 'contacts/run',
         'admin/contacts' => 'contacts/run',
-        
         
     ];
     
@@ -24,46 +18,24 @@ class Router{
     
     public function getControllerAndAction(&$ctrl,&$act){
         
+        
         session_start();
         
         $url = $_SERVER['REQUEST_URI'];
         
         $arr = explode('/',$url);
         
-//        debug($arr);
-//        if(isset($_SESSION)) debug($_SESSION);
-        
-        
-        
         $reg = '/[a-zA-Z]*/';
         
         $tmp = [];
         
-        if(count($arr) > 3){
-            
-            $ctrl = 'login';
-            $act = 'run';
-            
-            $ctrl = ucfirst($ctrl).'Controller';
-            $act = 'action'.ucfirst($act);
-            
-            return;
+        if(count($arr) == 2 && empty($arr[1])){
+            include 'settings.php';
+            exit();
         }
+
         
-        
-        if(!isset($_SESSION['loggedIn'])){
-            $ctrl = 'login';
-            $act = 'run';
-            
-            $ctrl = ucfirst($ctrl).'Controller';
-            $act = 'action'.ucfirst($act);
-            
-            return;
-        }
-        
-        
-        
-        if($arr[1] == 'admin' && $arr[2] == ''){
+        if((count($arr) > 3) || (!isset($_SESSION['loggedIn'])) || ($arr[1] == 'admin' && $arr[2] == '')){
             $ctrl = 'login';
             $act = 'run';
             
@@ -74,28 +46,6 @@ class Router{
         }
 
         
-        
-//        if($arr[1] == 'admin' && $arr[2] == 'login' && $arr[3] == 'logout'){
-//            $ctrl = 'login';
-//            $act = 'logout';
-//            
-//            $ctrl = ucfirst($ctrl).'Controller';
-//            $act = 'action'.ucfirst($act);
-//            
-//            return;
-//        }
-        
-//        if(!empty($arr[2]) && preg_match($reg,$arr[2])){
-//            
-//            foreach($this->routes as $k => $v){
-//                
-//                if($arr[2] == $k) $tmp = explode('/',$v);
-//                
-//            }
-//            
-//            
-//        }
-        
         if(!empty($arr[2]) && preg_match($reg,$arr[2]) && $arr[1] == 'admin'){
             
             foreach($this->routes as $k => $v){
@@ -105,8 +55,6 @@ class Router{
                 if($arr[2] == $routes[1]) $tmp = explode('/',$v);
                 
             }
-            
-            
         }
         
         if(!empty($tmp)){
@@ -132,17 +80,11 @@ class Router{
         
         $controller = new $ctrl(); // запуск класса объекта и его метода
         $controller -> $act();
-        
-        
-        
-        
-        
+                
         
         echo 'CONTROLLER - '.$ctrl.'<br/>';
         echo 'ACTION - '.$act;
-//        
-//        die;
-        
+
         
         
     }
