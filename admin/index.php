@@ -1,6 +1,6 @@
 <?php
 
-include '../autoload.php'; // автозагрузчик классов
+require_once '../autoload.php'; // автозагрузчик классов
 
     $router = new Router();
     $router -> run();

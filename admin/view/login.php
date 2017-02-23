@@ -1,7 +1,7 @@
 
 <h1>Login</h1>
    
-<form action="/" method="post">
+<form action="login/run" method="post">
     
     <p>
         <p>Login:</p> <input type="text" name="login" />

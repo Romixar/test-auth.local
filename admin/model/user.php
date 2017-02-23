@@ -29,17 +29,20 @@ class User extends DB{
 //           Session::init();
 //           Session::set('loggedIn', true);
             
-            echo 'ok';
-            die;
+            //session_start();
+            //echo 'попадаю';
+            //debug($_SESSION);
             
-           //header('Location: /main');
+            $_SESSION['loggedIn'] = true;
+            
+            return;
+
             
         }else{
             
-            echo 'bad(((...';
-            die;
+            return;
             
-           //header('Location: /');
+
             
         }
         

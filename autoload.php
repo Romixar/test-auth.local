@@ -17,6 +17,12 @@ function __autoload($cl_name){
         
     }
     
+    if(file_exists(__DIR__.'/admin/'.$file)){
+        
+        include __DIR__.'/admin/'.$file;
+        
+    }
+    
     if(file_exists(__DIR__.'/admin/model/'.$file)){
         
         include __DIR__.'/admin/model/'.$file;
