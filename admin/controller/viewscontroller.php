@@ -12,8 +12,7 @@ class ViewsController{
 //    }
     
     public function render($tmpl){
-        
-        
+
         
         ob_start();
         extract($this->data); // названия ключей будут переменными
@@ -21,7 +20,7 @@ class ViewsController{
         //include '/admin/view/'.$tmpl.'.php';
         include '/../view/'.$tmpl.'_tpl.php';
         
-        return ob_get_clean($tmpl);
+        return ob_get_clean();
         
     }
     

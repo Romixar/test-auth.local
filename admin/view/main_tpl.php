@@ -18,7 +18,7 @@
 
 <body>
    
-    <?= $buttons ?>
+   <?= $buttons ?>
  
    <div>
        <?= $content ?>    
