@@ -3,6 +3,8 @@
 
 class ViewsController{
     
+    public $vars = []; // переменные для шаблона main
+    
     
     public function render($tmpl,$data=[]){
 
@@ -13,6 +15,8 @@ class ViewsController{
     }
     
     public function display($tmpl,$data){
+        
+        if(!empty($this->vars)) $data = $this -> setVars($data);
         
         echo $this->prerender($tmpl,$data);
 
@@ -31,6 +35,15 @@ class ViewsController{
             
         }
         return false;
+        
+    }
+    
+    private function setVars($data){ // добавляю переменные в шаблон main
+        
+        foreach($this->vars as $k => $v){
+            $data[$k] = $v;
+        }
+        return $data;
         
     }
 

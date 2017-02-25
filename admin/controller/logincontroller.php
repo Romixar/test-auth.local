@@ -23,9 +23,13 @@ class LoginController extends Controller{
         
         if(isset($_SESSION['loggedIn'])){
             
+            $title = 'Управление страницей главная';
             
+            $h1 = 'Page of Main';
             
-            $this -> view -> display('main');
+            $this -> view -> vars = compact('title');
+            
+            $this -> view -> render('video',compact('h1'));
             
             
             
@@ -33,7 +37,12 @@ class LoginController extends Controller{
             
             $h1 = 'Авторизация';
             
-            //$this -> view -> vars = 'Страница авторизаци';
+            $title = 'Страница авторизаци';
+            
+            $footer = 'Футер для страницыы авторизации';
+            
+            
+            $this -> view -> vars = compact('title','footer');
             
             $this -> view -> render('login',compact('h1'));
             
