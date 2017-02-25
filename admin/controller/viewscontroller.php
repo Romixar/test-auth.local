@@ -22,7 +22,7 @@ class ViewsController{
 
     }
     
-    private function prerender($tmpl,$data=[]){
+    public function prerender($tmpl,$data=[]){
         
         if(file_exists('admin\view\\'.$tmpl.'_tpl.php')){
             

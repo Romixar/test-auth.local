@@ -5,8 +5,11 @@ class ContactsController extends Controller{
     
     public function actionRun(){
         
-        
-        $this -> view -> render('contacts');
+        $h1 = 'Page of Contacts';
+        $title = 'Управление страницей контакты';
+        $buttons = parent::initMain();
+        $this -> view -> vars = compact('title','buttons');
+        $this -> view -> render('contacts',compact('h1'));
         
         
     }

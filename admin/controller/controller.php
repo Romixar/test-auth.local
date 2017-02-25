@@ -9,12 +9,16 @@ class Controller{
     
     public function __construct(){
         
-        //session_start();
         $this -> view = new ViewsController(); // контроллер видов
         
         if(isset($_POST)) $this->data = $_POST;
-
         
+    }
+    
+    public function initMain(){
+        if(isset($_SESSION['loggedIn'])){
+            return $this -> view -> prerender('buttons');
+        }
     }
     
     

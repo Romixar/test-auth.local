@@ -27,8 +27,9 @@ class LoginController extends Controller{
             
             $h1 = 'Page of Main';
             
-            $this -> view -> vars = compact('title');
-            
+            $buttons = parent::initMain();
+            $this -> view -> vars = compact('title','buttons');
+
             $this -> view -> render('video',compact('h1'));
             
             
