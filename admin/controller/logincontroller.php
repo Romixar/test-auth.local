@@ -40,7 +40,7 @@ class LoginController extends Controller{
             
             $title = 'Страница авторизаци';
             
-            $footer = 'Футер для страницыы авторизации';
+            $footer = 'Футер для страницы авторизации';
             
             
             $this -> view -> vars = compact('title','footer');
@@ -59,7 +59,16 @@ class LoginController extends Controller{
         
         session_destroy();
         
-        $this -> view -> render('login');
+        $h1 = 'Авторизация';
+            
+        $title = 'Страница авторизаци';
+            
+        $footer = 'Футер для страницы авторизации';
+            
+            
+        $this -> view -> vars = compact('title','footer');
+            
+        $this -> view -> render('login',compact('h1'));
         
         exit();
     }
