@@ -18,10 +18,6 @@ class LoginController extends Controller{
     
     public function actionRun(){
         
-            
-//        $this -> view -> set('buttons','Кнопки управления');
-//        $this -> view -> display('main');
-        
         
         if(isset($this->data['do_login'])) $this -> model -> run();
         
@@ -35,20 +31,13 @@ class LoginController extends Controller{
             
         }else{
             
-            $title = 'Авторизация';
-            $content = $this -> view -> render('login');
+            $h1 = 'Авторизация';
+            $this -> view -> render('login',compact('h1'));
             
-            //echo $content;
-            
-            $this -> view -> set('title',$title);
-            $this -> view -> set('content',$content);
-            
-            $this -> view -> display('main');
             
             
             
         }
-        //$this-> view -> render('login');
 
         
     }
