@@ -32,6 +32,9 @@ class LoginController extends Controller{
         }else{
             
             $h1 = 'Авторизация';
+            
+            //$this -> view -> vars = 'Страница авторизаци';
+            
             $this -> view -> render('login',compact('h1'));
             
             

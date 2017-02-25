@@ -3,34 +3,35 @@
 
 class ViewsController{
     
-
     
     public function render($tmpl,$data=[]){
 
-        
-        ob_start();
-        extract($data); // названия ключей будут переменными
-        
-        //include '/admin/view/'.$tmpl.'.php';
-        include '/../view/'.$tmpl.'_tpl.php';
-        
-        $content = ob_get_clean();
+        $content = $this->prerender($tmpl,$data);
         
         $this -> display('main',compact('content'));
-        //return $content;
         
     }
     
     public function display($tmpl,$data){
         
-        ob_start();
-        extract($data); // названия ключей будут переменными
-        
-        //include '/admin/view/'.$tmpl.'.php';
-        include '/../view/'.$tmpl.'_tpl.php';
-        
-        echo ob_get_clean();
+        echo $this->prerender($tmpl,$data);
 
+    }
+    
+    private function prerender($tmpl,$data=[]){
+        
+        if(file_exists('admin\view\\'.$tmpl.'_tpl.php')){
+            
+            ob_start();
+            extract($data); // названия ключей будут переменными
+
+            include '/../view/'.$tmpl.'_tpl.php';
+            return ob_get_clean();
+            
+            
+        }
+        return false;
+        
     }
 
     
